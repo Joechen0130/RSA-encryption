@@ -52,20 +52,20 @@ def decryption(str_,d,N):
     return  decryption_str
 
 if __name__ == '__main__':
-    Plaintext = read_txt_file("HW_Text.txt")
-    p = 71
-    q = 47
-    N = p * q
-    Euler_Totient = (p-1) * (q-1)
-    #e = find_gcd_Euler_Totient(Euler_Totient)#最先是3  3和3220互質
-    # print(gcd(3,3220))
-    e = 79
-    d = find_d(e,Euler_Totient)
-    print(f"d:{d}")
-    Ciphertext = encryption(Plaintext, e, N)
+    file_name = input("Input file name:")
+    Plaintext = read_txt_file("file_name")
 
-    print(f"Ciphertext\n{Ciphertext}")
+    p = int(input("Input p:"))
+    q =  int(input("Input q:"))
+    N = p * q
+
+    Euler_Totient = (p-1) * (q-1)
+    e = find_gcd_Euler_Totient(Euler_Totient)
+    d = find_d(e,Euler_Totient)
+
+    Ciphertext = encryption(Plaintext, e, N)
+    print("Encryption save in Ciphertext.txt")
     write_txt_file(Ciphertext,"Ciphertext.txt")
     DecryptionCiphertext = decryption(Ciphertext, d ,N)
     write_txt_file(DecryptionCiphertext,"DecryptionCiphertext.txt")
-    print(f"Decryption Ciphertext\n{DecryptionCiphertext}")
+    print(f"Decryption save in DecryptionCiphertext.txt")
