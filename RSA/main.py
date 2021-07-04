@@ -40,8 +40,6 @@ def find_d(e,Euler_Totient):
 def encryption(str_,e,N):
     encryption_str = ""
     for i in str_:
-        print((ord(i) ** e) % N)
-        print(chr((ord(i) ** e) % N))
         encryption_str += chr((ord(i) ** e) % N)
     return  encryption_str
 
@@ -53,7 +51,7 @@ def decryption(str_,d,N):
 
 if __name__ == '__main__':
     file_name = input("Input file name:")
-    Plaintext = read_txt_file("file_name")
+    Plaintext = read_txt_file(file_name)
 
     p = int(input("Input p:"))
     q =  int(input("Input q:"))
